@@ -1,0 +1,13 @@
+{
+  "crons": [
+    {
+      "path": "/api/cron/notifications/digest?token=CRON_SECRET_PLACEHOLDER&mode=daily",
+      "schedule": "0 9 * * *"
+    },
+    {
+      "path": "/api/cron/notifications/digest?token=CRON_SECRET_PLACEHOLDER&mode=weekly",
+      "schedule": "0 9 * * 1"
+    }
+  ]
+}
+
