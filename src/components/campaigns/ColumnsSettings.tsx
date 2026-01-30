@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import {
   getDefaultCampaignColumns,
   type CampaignColumnConfig,
-} from "@/lib/data/campaignUiConfig";
+} from "@/lib/config/campaignColumns";
 import type { CustomFieldDefinition } from "@/lib/data/adminCustomFields";
 
 interface ColumnsSettingsProps {

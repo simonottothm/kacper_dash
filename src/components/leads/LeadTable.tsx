@@ -3,8 +3,8 @@
 import { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import type { Lead, StatusDefinition } from "@/lib/data/leads";
-import type { CampaignColumnConfig } from "@/lib/data/campaignUiConfig";
-import { getDefaultCampaignColumns } from "@/lib/data/campaignUiConfig";
+import type { CampaignColumnConfig } from "@/lib/config/campaignColumns";
+import { getDefaultCampaignColumns } from "@/lib/config/campaignColumns";
 import LeadModal from "./LeadModal";
 
 interface LeadTableProps {

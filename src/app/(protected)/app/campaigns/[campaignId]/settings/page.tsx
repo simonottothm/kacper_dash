@@ -4,10 +4,8 @@ import { getActiveTenantId } from "@/lib/tenant/activeTenant";
 import { getMemberships } from "@/lib/data/tenants";
 import { getCampaignById, verifyCampaignAccess } from "@/lib/data/campaigns";
 import { listTenantCustomFields } from "@/lib/data/adminCustomFields";
-import {
-  getCampaignUiConfig,
-  getDefaultCampaignColumns,
-} from "@/lib/data/campaignUiConfig";
+import { getDefaultCampaignColumns } from "@/lib/config/campaignColumns";
+import { getCampaignUiConfig } from "@/lib/data/campaignUiConfig";
 import { TopbarProvider } from "@/components/layout/TopbarProvider";
 import CampaignSettingsTabs from "@/components/campaigns/CampaignSettingsTabs";
 

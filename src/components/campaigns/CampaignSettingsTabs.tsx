@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import type { CampaignColumnConfig } from "@/lib/data/campaignUiConfig";
+import type { CampaignColumnConfig } from "@/lib/config/campaignColumns";
 import type { CustomFieldDefinition } from "@/lib/data/adminCustomFields";
 import ColumnsSettings from "./ColumnsSettings";
 import IntegrationSetup from "./IntegrationSetup";

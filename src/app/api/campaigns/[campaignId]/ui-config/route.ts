@@ -3,11 +3,10 @@ import { z } from "zod";
 import { getCurrentUser } from "@/lib/auth/getCurrentUser";
 import { getCampaignById, verifyCampaignAccess } from "@/lib/data/campaigns";
 import { getMemberships } from "@/lib/data/tenants";
+import { getDefaultCampaignColumns, type CampaignColumnConfig } from "@/lib/config/campaignColumns";
 import {
   getCampaignUiConfig,
-  getDefaultCampaignColumns,
   upsertCampaignUiConfig,
-  type CampaignColumnConfig,
 } from "@/lib/data/campaignUiConfig";
 import { listTenantCustomFields } from "@/lib/data/adminCustomFields";
 

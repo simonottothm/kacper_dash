@@ -13,10 +13,8 @@ import ViewToggle from "@/components/campaigns/ViewToggle";
 import SecondaryColumn from "@/components/campaigns/SecondaryColumn";
 import KanbanBoard from "@/components/kanban/KanbanBoard";
 import { listTenantCustomFields } from "@/lib/data/adminCustomFields";
-import {
-  getCampaignUiConfig,
-  getDefaultCampaignColumns,
-} from "@/lib/data/campaignUiConfig";
+import { getDefaultCampaignColumns } from "@/lib/config/campaignColumns";
+import { getCampaignUiConfig } from "@/lib/data/campaignUiConfig";
 import CreateLeadButton from "@/components/leads/CreateLeadButton";
 import Link from "next/link";
 
