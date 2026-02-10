@@ -18,7 +18,7 @@ export async function GET() {
             return NextResponse.json({ error: "Forbidden" }, { status: 403 });
         }
 
-        const supabase = getServiceClient();
+        const supabase = getServiceClient() as any;
 
         // Get admin's own campaigns (tenant_id is NULL for admin-owned campaigns)
         const { data: campaigns, error } = await supabase
@@ -76,7 +76,7 @@ export async function POST(request: Request) {
             return NextResponse.json({ error: "Name is required" }, { status: 400 });
         }
 
-        const supabase = getServiceClient();
+        const supabase = getServiceClient() as any;
 
         const { data: campaign, error } = await supabase
             .from("campaigns")
