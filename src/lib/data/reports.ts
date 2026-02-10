@@ -27,11 +27,13 @@ export interface CampaignReport {
 export async function getCampaignReport(campaignId: string): Promise<CampaignReport> {
   const supabase = await createClient();
 
-  const { data: leads, error: leadsError } = await supabase
+  const { data: leadsData, error: leadsError } = await supabase
     .from("leads")
-    .select("status_id")
+    .select("id, status_id")
     .eq("campaign_id", campaignId)
     .eq("is_archived", false);
+
+  const leads = (leadsData || []) as any[];
 
   if (leadsError) {
     throw new Error(`Failed to fetch leads: ${leadsError.message}`);
@@ -48,7 +50,7 @@ export async function getCampaignReport(campaignId: string): Promise<CampaignRep
     .in("id", Array.from(statusIds).filter((id): id is string => id !== null));
 
   const statusMap = new Map(
-    (statuses || []).map((s) => [s.id, s.label])
+    ((statuses as any[]) || []).map((s) => [s.id, s.label])
   );
 
   const statusCounts = new Map<string | null, number>();
@@ -77,11 +79,13 @@ export async function getCampaignReport(campaignId: string): Promise<CampaignRep
     };
   }
 
-  const { data: updates, error: updatesError } = await supabase
+  const { data: updatesData, error: updatesError } = await supabase
     .from("lead_updates")
     .select("created_at")
     .in("lead_id", leadIds)
     .gte("created_at", eightWeeksAgo.toISOString());
+
+  const updates = (updatesData || []) as any[];
 
   if (updatesError) {
     throw new Error(`Failed to fetch updates: ${updatesError.message}`);
@@ -103,11 +107,13 @@ export async function getCampaignReport(campaignId: string): Promise<CampaignRep
     .sort((a, b) => a.weekStart.localeCompare(b.weekStart))
     .slice(-8);
 
-  const { data: callAttempts, error: callError } = await supabase
+  const { data: callAttemptsData, error: callError } = await supabase
     .from("lead_updates")
     .select("call_outcome")
     .eq("update_type", "call_attempt")
     .in("lead_id", leadIds);
+
+  const callAttempts = (callAttemptsData || []) as any[];
 
   if (callError) {
     throw new Error(`Failed to fetch call attempts: ${callError.message}`);
@@ -132,11 +138,13 @@ export async function getCampaignReport(campaignId: string): Promise<CampaignRep
   thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
 
 
-  const { data: lastUpdates, error: lastUpdatesError } = await supabase
+  const { data: lastUpdatesData, error: lastUpdatesError } = await supabase
     .from("lead_updates")
     .select("lead_id, created_at")
     .in("lead_id", leadIds)
     .order("created_at", { ascending: false });
+
+  const lastUpdates = (lastUpdatesData || []) as any[];
 
   if (lastUpdatesError) {
     throw new Error(`Failed to fetch last updates: ${lastUpdatesError.message}`);
