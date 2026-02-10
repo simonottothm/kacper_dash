@@ -57,7 +57,7 @@ export async function POST(request: Request) {
     const validated = upsertLeadsSchema.parse(body);
 
     const keyHash = hashApiKey(apiKey);
-    const serviceClient = getServiceClient();
+    const serviceClient = getServiceClient() as any;
 
     const { data: apiKeyRecord, error: keyError } = await serviceClient
       .from("api_keys")
@@ -98,13 +98,15 @@ export async function POST(request: Request) {
       return forbidden("Campaign not found", requestId);
     }
 
-    const { data: statuses } = await serviceClient
+    const { data: statusesData } = await serviceClient
       .from("status_definitions")
       .select("id, label")
       .eq("tenant_id", validated.tenantId);
 
-    const statusMap = new Map(
-      (statuses || []).map((s: StatusDefinition) => [s.label.toLowerCase(), s.id])
+    const statuses = (statusesData || []) as any[];
+
+    const statusMap = new Map<string, string>(
+      statuses.map((s: any) => [s.label.toLowerCase(), s.id])
     );
 
     const stats = {
