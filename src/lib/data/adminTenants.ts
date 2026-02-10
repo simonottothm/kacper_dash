@@ -27,7 +27,7 @@ export async function listAdminTenants(): Promise<Tenant[]> {
     throw new Error(`Failed to fetch admin tenants: ${error.message}`);
   }
 
-  return (data || []).map((item) => item.tenant as Tenant);
+  return (data || []).map((item: any) => item.tenant as Tenant);
 }
 
 export async function getTenantById(tenantId: string): Promise<Tenant | null> {
@@ -66,7 +66,7 @@ export async function verifyTenantAdmin(tenantId: string): Promise<boolean> {
 }
 
 export async function createTenant(name: string, userId: string): Promise<Tenant> {
-  const supabase = getServiceClient();
+  const supabase = getServiceClient() as any;
 
   const { data: tenant, error: tenantError } = await supabase
     .from("tenants")
@@ -90,6 +90,6 @@ export async function createTenant(name: string, userId: string): Promise<Tenant
     throw new Error(`Failed to create membership: ${membershipError.message}`);
   }
 
-  return tenant as Tenant;
+  return tenant as any as Tenant;
 }
 
