@@ -1,13 +1,12 @@
 {
   "crons": [
     {
-      "path": "/api/cron/notifications/digest?token=CRON_SECRET_PLACEHOLDER&mode=daily",
+      "path": "/api/cron/notifications/digest?token=5395b9e09962f804a4228791d9bc0c7ed1e63c5899d22ecb1835b1fb55350422&mode=daily",
       "schedule": "0 9 * * *"
     },
     {
-      "path": "/api/cron/notifications/digest?token=CRON_SECRET_PLACEHOLDER&mode=weekly",
+      "path": "/api/cron/notifications/digest?token=5395b9e09962f804a4228791d9bc0c7ed1e63c5899d22ecb1835b1fb55350422&mode=weekly",
       "schedule": "0 9 * * 1"
     }
   ]
 }
-

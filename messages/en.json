@@ -1,0 +1,67 @@
+{
+    "en": {
+        "common": {
+            "welcome": "Welcome back!",
+            "dashboard": "Dashboard",
+            "campaigns": "Campaigns",
+            "leads": "Leads",
+            "settings": "Settings",
+            "logout": "Logout",
+            "save": "Save",
+            "cancel": "Cancel",
+            "create": "Create",
+            "edit": "Edit",
+            "delete": "Delete",
+            "search": "Search",
+            "filter": "Filter",
+            "export": "Export",
+            "import": "Import",
+            "loading": "Loading...",
+            "noData": "No data available",
+            "error": "An error occurred",
+            "success": "Successfully saved"
+        },
+        "dashboard": {
+            "title": "Dashboard",
+            "totalCampaigns": "Total Campaigns",
+            "activeTenant": "Active Tenant",
+            "yourRole": "Your Role",
+            "recentActivity": "Recent Activity",
+            "noCampaigns": "No campaigns available yet",
+            "createFirstCampaign": "Create your first campaign to get started"
+        },
+        "leads": {
+            "title": "Leads",
+            "createLead": "Create Lead",
+            "fullName": "Full Name",
+            "company": "Company",
+            "email": "Email",
+            "phone": "Phone",
+            "status": "Status",
+            "nextFollowUp": "Next Follow-up",
+            "customFields": "Custom Fields",
+            "noStatus": "No Status",
+            "creating": "Creating...",
+            "errorCreating": "Lead could not be created"
+        },
+        "settings": {
+            "title": "Settings",
+            "language": "Language",
+            "german": "German",
+            "english": "English",
+            "polish": "Polish",
+            "appearance": "Appearance",
+            "notifications": "Notifications",
+            "account": "Account"
+        },
+        "auth": {
+            "login": "Login",
+            "logout": "Logout",
+            "email": "Email",
+            "password": "Password",
+            "forgotPassword": "Forgot password?",
+            "noAccount": "Don't have an account?",
+            "signUp": "Sign up"
+        }
+    }
+}

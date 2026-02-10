@@ -1,0 +1,67 @@
+{
+    "pl": {
+        "common": {
+            "welcome": "Witamy z powrotem!",
+            "dashboard": "Panel",
+            "campaigns": "Kampanie",
+            "leads": "Leady",
+            "settings": "Ustawienia",
+            "logout": "Wyloguj",
+            "save": "Zapisz",
+            "cancel": "Anuluj",
+            "create": "Utwórz",
+            "edit": "Edytuj",
+            "delete": "Usuń",
+            "search": "Szukaj",
+            "filter": "Filtruj",
+            "export": "Eksportuj",
+            "import": "Importuj",
+            "loading": "Ładowanie...",
+            "noData": "Brak danych",
+            "error": "Wystąpił błąd",
+            "success": "Pomyślnie zapisano"
+        },
+        "dashboard": {
+            "title": "Panel",
+            "totalCampaigns": "Wszystkie kampanie",
+            "activeTenant": "Aktywny najemca",
+            "yourRole": "Twoja rola",
+            "recentActivity": "Ostatnia aktywność",
+            "noCampaigns": "Brak dostępnych kampanii",
+            "createFirstCampaign": "Utwórz swoją pierwszą kampanię, aby rozpocząć"
+        },
+        "leads": {
+            "title": "Leady",
+            "createLead": "Utwórz lead",
+            "fullName": "Pełne imię",
+            "company": "Firma",
+            "email": "E-mail",
+            "phone": "Telefon",
+            "status": "Status",
+            "nextFollowUp": "Następne działanie",
+            "customFields": "Pola niestandardowe",
+            "noStatus": "Brak statusu",
+            "creating": "Tworzenie...",
+            "errorCreating": "Nie można utworzyć leada"
+        },
+        "settings": {
+            "title": "Ustawienia",
+            "language": "Język",
+            "german": "Niemiecki",
+            "english": "Angielski",
+            "polish": "Polski",
+            "appearance": "Wygląd",
+            "notifications": "Powiadomienia",
+            "account": "Konto"
+        },
+        "auth": {
+            "login": "Zaloguj",
+            "logout": "Wyloguj",
+            "email": "E-mail",
+            "password": "Hasło",
+            "forgotPassword": "Zapomniałeś hasła?",
+            "noAccount": "Nie masz konta?",
+            "signUp": "Zarejestruj się"
+        }
+    }
+}

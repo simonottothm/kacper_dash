@@ -1,0 +1,67 @@
+{
+    "de": {
+        "common": {
+            "welcome": "Willkommen zurück!",
+            "dashboard": "Dashboard",
+            "campaigns": "Kampagnen",
+            "leads": "Leads",
+            "settings": "Einstellungen",
+            "logout": "Abmelden",
+            "save": "Speichern",
+            "cancel": "Abbrechen",
+            "create": "Erstellen",
+            "edit": "Bearbeiten",
+            "delete": "Löschen",
+            "search": "Suchen",
+            "filter": "Filtern",
+            "export": "Exportieren",
+            "import": "Importieren",
+            "loading": "Lädt...",
+            "noData": "Keine Daten verfügbar",
+            "error": "Ein Fehler ist aufgetreten",
+            "success": "Erfolgreich gespeichert"
+        },
+        "dashboard": {
+            "title": "Dashboard",
+            "totalCampaigns": "Kampagnen gesamt",
+            "activeTenant": "Aktiver Mandant",
+            "yourRole": "Ihre Rolle",
+            "recentActivity": "Letzte Aktivitäten",
+            "noCampaigns": "Noch keine Kampagnen verfügbar",
+            "createFirstCampaign": "Erstellen Sie Ihre erste Kampagne, um zu beginnen"
+        },
+        "leads": {
+            "title": "Leads",
+            "createLead": "Lead erstellen",
+            "fullName": "Vollständiger Name",
+            "company": "Firma",
+            "email": "E-Mail",
+            "phone": "Telefon",
+            "status": "Status",
+            "nextFollowUp": "Nächste Nachverfolgung",
+            "customFields": "Benutzerdefinierte Felder",
+            "noStatus": "Kein Status",
+            "creating": "Wird erstellt...",
+            "errorCreating": "Lead konnte nicht erstellt werden"
+        },
+        "settings": {
+            "title": "Einstellungen",
+            "language": "Sprache",
+            "german": "Deutsch",
+            "english": "Englisch",
+            "polish": "Polnisch",
+            "appearance": "Erscheinungsbild",
+            "notifications": "Benachrichtigungen",
+            "account": "Konto"
+        },
+        "auth": {
+            "login": "Anmelden",
+            "logout": "Abmelden",
+            "email": "E-Mail",
+            "password": "Passwort",
+            "forgotPassword": "Passwort vergessen?",
+            "noAccount": "Noch kein Konto?",
+            "signUp": "Registrieren"
+        }
+    }
+}

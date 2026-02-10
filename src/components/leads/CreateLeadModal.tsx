@@ -136,7 +136,7 @@ export default function CreateLeadModal({
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth={2}
-                  d=\"M6 18L18 6M6 6l12 12\"
+                  d="M6 18L18 6M6 6l12 12"
                 />
               </svg>
             </button>
@@ -216,8 +216,9 @@ export default function CreateLeadModal({
                 <h3 className="text-sm font-semibold text-[var(--text)]">Custom Fields</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {customFields.map((field) => {
-                    const value = form.customFields[field.field_key || field.key] || "";
-                    if (field.field_type === \"select\" && field.options?.length) {
+                    const fieldKey = field.field_key || field.key || "";
+                    const value = form.customFields[fieldKey] || "";
+                    if (field.field_type === "select" && field.options?.length) {
                       return (
                         <div key={field.id}>
                           <label className="block text-sm font-medium text-muted mb-1">
@@ -226,7 +227,7 @@ export default function CreateLeadModal({
                           <select
                             value={value}
                             onChange={(e) =>
-                              updateCustomField(field.field_key || field.key, e.target.value)
+                              updateCustomField(fieldKey, e.target.value)
                             }
                             className="w-full px-4 py-2 border border-app rounded-xl bg-card focus:outline-none focus:ring-2 focus:ring-accent text-sm"
                           >
@@ -250,7 +251,7 @@ export default function CreateLeadModal({
                           type={field.field_type === "number" ? "number" : "text"}
                           value={value}
                           onChange={(e) =>
-                            updateCustomField(field.field_key || field.key, e.target.value)
+                            updateCustomField(fieldKey, e.target.value)
                           }
                           className="w-full px-4 py-2 border border-app rounded-xl bg-card focus:outline-none focus:ring-2 focus:ring-accent text-sm"
                         />
@@ -269,14 +270,14 @@ export default function CreateLeadModal({
 
             <div className="flex justify-end gap-2 pt-2">
               <button
-                type=\"button\"
+                type="button"
                 onClick={onClose}
                 className="px-4 py-2 border border-app rounded-xl text-sm font-medium text-[var(--text)] bg-card hover:bg-[var(--bg)] transition-colors"
               >
                 Cancel
               </button>
               <button
-                type=\"submit\"
+                type="submit"
                 disabled={saving}
                 className="px-4 py-2 bg-accent text-white rounded-xl hover:bg-accent-hover focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent disabled:opacity-50 text-sm font-medium transition-colors"
               >
