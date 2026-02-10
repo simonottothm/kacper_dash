@@ -97,7 +97,7 @@ export async function POST(
       validated.field_key,
       validated.label,
       validated.field_type,
-      validated.field_type === "select" ? validated.options : null,
+      validated.field_type === "select" ? (validated.options ?? null) : null,
       validated.is_pinned,
       validated.sort_order
     );
