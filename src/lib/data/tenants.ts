@@ -22,7 +22,7 @@ export async function getMemberships(userId: string): Promise<Membership[]> {
     throw new Error(`Failed to fetch memberships: ${error.message}`);
   }
 
-  return (data || []).map((item) => ({
+  return (data || []).map((item: any) => ({
     tenant_id: item.tenant_id,
     user_id: item.user_id,
     role: item.role as "admin" | "client",
