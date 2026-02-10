@@ -6,7 +6,7 @@ import type { Lead } from "@/lib/data/leads";
 import type { StatusDefinition } from "@/lib/data/adminStatus";
 
 interface KanbanColumnProps {
-  status: StatusDefinition | { id: null; label: string };
+  status: { id: string | null; label: string };
   leads: Lead[];
   campaignId: string;
 }
@@ -19,9 +19,8 @@ export default function KanbanColumn({ status, leads, campaignId }: KanbanColumn
   return (
     <div
       ref={setNodeRef}
-      className={`flex-1 min-w-[280px] bg-[var(--bg)] rounded-xl p-4 border border-app ${
-        isOver ? "bg-accent-light border-2 border-accent" : ""
-      }`}
+      className={`flex-1 min-w-[280px] bg-[var(--bg)] rounded-xl p-4 border border-app ${isOver ? "bg-accent-light border-2 border-accent" : ""
+        }`}
     >
       <div className="mb-4">
         <h3 className="font-semibold text-[var(--text)]">{status.label}</h3>
