@@ -40,7 +40,7 @@ export default function LoginForm({ redirectTo }: LoginFormProps) {
       <div className="space-y-4">
         <div>
           <label htmlFor="email" className="block text-xs font-medium text-muted mb-2 uppercase tracking-wide">
-            Email address
+            E-Mail-Adresse
           </label>
           <input
             id="email"
@@ -56,7 +56,7 @@ export default function LoginForm({ redirectTo }: LoginFormProps) {
         </div>
         <div>
           <label htmlFor="password" className="block text-xs font-medium text-muted mb-2 uppercase tracking-wide">
-            Password
+            Passwort
           </label>
           <input
             id="password"
@@ -84,7 +84,7 @@ export default function LoginForm({ redirectTo }: LoginFormProps) {
           disabled={loading}
           className="w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-xl text-white bg-accent hover:bg-accent-hover focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
         >
-          {loading ? "Signing in..." : "Sign in"}
+          {loading ? "Anmeldung läuft..." : "Anmelden"}
         </button>
       </div>
     </form>

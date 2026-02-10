@@ -27,7 +27,7 @@ export default function CreateLeadButton({
     const params = new URLSearchParams(searchParams.toString());
     params.set("leadId", lead.id);
     router.push(`/app/campaigns/${campaignId}?${params.toString()}`);
-    setToast("Lead created");
+    setToast("Lead erstellt");
     setTimeout(() => setToast(null), 2500);
   };
 
@@ -37,7 +37,7 @@ export default function CreateLeadButton({
         onClick={() => setIsOpen(true)}
         className="px-4 py-2 bg-accent text-white rounded-xl hover:bg-accent-hover focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent text-sm font-medium transition-colors"
       >
-        Create Lead
+        Lead erstellen
       </button>
 
       <CreateLeadModal

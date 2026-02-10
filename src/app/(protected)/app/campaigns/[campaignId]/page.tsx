@@ -10,7 +10,6 @@ import { TopbarProvider } from "@/components/layout/TopbarProvider";
 import LeadTableToolbar from "@/components/leads/LeadTableToolbar";
 import LeadTable from "@/components/leads/LeadTable";
 import ViewToggle from "@/components/campaigns/ViewToggle";
-import SecondaryColumn from "@/components/campaigns/SecondaryColumn";
 import KanbanBoard from "@/components/kanban/KanbanBoard";
 import { listTenantCustomFields } from "@/lib/data/adminCustomFields";
 import { getDefaultCampaignColumns } from "@/lib/config/campaignColumns";
@@ -134,18 +133,20 @@ export default async function CampaignPage({ params, searchParams }: CampaignPag
       }}
     >
       <div className="px-6 sm:px-8 py-6 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-6 lg:gap-8 w-full">
+        <div className="w-full">
           <div className="min-w-0">
             <div className="bg-card border border-app rounded-2xl shadow-app overflow-hidden">
               <div className="px-6 py-4 border-b border-app flex items-center justify-between">
                 <h2 className="text-lg font-semibold text-[var(--text)]">Leads</h2>
                 <div className="flex items-center gap-3">
-                  <Link
-                    href={`/app/campaigns/${campaignId}/settings`}
-                    className="px-3 py-2 border border-app rounded-xl text-sm font-medium text-[var(--text)] bg-card hover:bg-[var(--bg)] transition-colors"
-                  >
-                    Campaign Settings
-                  </Link>
+                  {activeMembership.role === "admin" && (
+                    <Link
+                      href={`/app/campaigns/${campaignId}/settings`}
+                      className="px-3 py-2 border border-app rounded-xl text-sm font-medium text-[var(--text)] bg-card hover:bg-[var(--bg)] transition-colors"
+                    >
+                      Kampagneneinstellungen
+                    </Link>
+                  )}
                   <CreateLeadButton
                     campaignId={campaignId}
                     statuses={statuses}
@@ -181,10 +182,6 @@ export default async function CampaignPage({ params, searchParams }: CampaignPag
                 )}
               </div>
             </div>
-          </div>
-
-          <div className="min-w-0">
-            <SecondaryColumn campaignId={campaignId} />
           </div>
         </div>
       </div>

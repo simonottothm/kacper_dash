@@ -5,7 +5,6 @@ import { getCampaigns } from "@/lib/data/campaigns";
 import { getTenantById } from "@/lib/data/tenants";
 import { getMemberships } from "@/lib/data/tenants";
 import { TopbarProvider } from "@/components/layout/TopbarProvider";
-import ActivityFeed from "@/components/activity/ActivityFeed";
 import Link from "next/link";
 
 export default async function AppPage() {
@@ -34,7 +33,7 @@ export default async function AppPage() {
         <div className="px-6 sm:px-8 py-6 w-full">
           <div className="bg-card border border-app rounded-2xl shadow-app p-12 text-center">
             <p className="text-muted">
-              No access. Please contact an administrator to be added to a tenant.
+              Kein Zugriff. Bitte kontaktieren Sie einen Administrator, um zu einem Mandanten hinzugefügt zu werden.
             </p>
           </div>
         </div>
@@ -51,7 +50,7 @@ export default async function AppPage() {
       >
         <div className="px-6 sm:px-8 py-6 w-full">
           <div className="bg-card border border-app rounded-2xl shadow-app p-12 text-center">
-            <p className="text-muted">Please select a tenant to continue.</p>
+            <p className="text-muted">Bitte wählen Sie einen Mandanten aus, um fortzufahren.</p>
           </div>
         </div>
       </TopbarProvider>
@@ -75,14 +74,14 @@ export default async function AppPage() {
       }}
     >
       <div className="px-6 sm:px-8 py-6 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-6 lg:gap-8 w-full">
-          {/* Main Column */}
+        <div className="w-full">
+          {/* Main Column - Full Width */}
           <div className="min-w-0 space-y-6">
             {/* Welcome Card */}
             <div className="bg-accent-gradient rounded-2xl p-8 text-white shadow-app-lg">
-              <h1 className="text-2xl font-semibold mb-2">Welcome back!</h1>
+              <h1 className="text-2xl font-semibold mb-2">Willkommen zurück!</h1>
               <p className="text-blue-100 text-base">
-                {tenant?.name ? `Managing campaigns for ${tenant.name}` : "Manage your leads and campaigns"}
+                {tenant?.name ? `Kampagnen verwalten für ${tenant.name}` : "Verwalten Sie Ihre Leads und Kampagnen"}
               </p>
             </div>
 
@@ -90,7 +89,7 @@ export default async function AppPage() {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div className="bg-card border border-app rounded-2xl p-6 shadow-app hover:shadow-app-md transition-all duration-200">
                 <div className="flex items-center justify-between mb-3">
-                  <span className="text-sm font-medium text-muted">Total Campaigns</span>
+                  <span className="text-sm font-medium text-muted">Kampagnen gesamt</span>
                   <div className="w-10 h-10 rounded-xl bg-accent-light flex items-center justify-center shrink-0">
                     <svg className="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
@@ -102,7 +101,7 @@ export default async function AppPage() {
 
               <div className="bg-card border border-app rounded-2xl p-6 shadow-app hover:shadow-app-md transition-all duration-200">
                 <div className="flex items-center justify-between mb-3">
-                  <span className="text-sm font-medium text-muted">Active Tenant</span>
+                  <span className="text-sm font-medium text-muted">Aktiver Mandant</span>
                   <div className="w-10 h-10 rounded-xl bg-accent-light flex items-center justify-center shrink-0">
                     <svg className="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
@@ -114,7 +113,7 @@ export default async function AppPage() {
 
               <div className="bg-card border border-app rounded-2xl p-6 shadow-app hover:shadow-app-md transition-all duration-200">
                 <div className="flex items-center justify-between mb-3">
-                  <span className="text-sm font-medium text-muted">Your Role</span>
+                  <span className="text-sm font-medium text-muted">Ihre Rolle</span>
                   <div className="w-10 h-10 rounded-xl bg-accent-light flex items-center justify-center shrink-0">
                     <svg className="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
@@ -128,9 +127,9 @@ export default async function AppPage() {
             {/* Campaigns Section */}
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <h2 className="text-lg font-semibold text-[var(--text)]">Campaigns</h2>
+                <h2 className="text-lg font-semibold text-[var(--text)]">Kampagnen</h2>
                 {campaigns.length > 0 && (
-                  <span className="text-sm text-muted">{campaigns.length} {campaigns.length === 1 ? 'campaign' : 'campaigns'}</span>
+                  <span className="text-sm text-muted">{campaigns.length} {campaigns.length === 1 ? 'Kampagne' : 'Kampagnen'}</span>
                 )}
               </div>
 
@@ -141,8 +140,8 @@ export default async function AppPage() {
                       <path strokeLinecap="round" strokeLinejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                     </svg>
                   </div>
-                  <p className="text-base font-medium text-[var(--text)] mb-1">No campaigns available yet</p>
-                  <p className="text-sm text-muted">Create your first campaign to get started</p>
+                  <p className="text-base font-medium text-[var(--text)] mb-1">Noch keine Kampagnen verfügbar</p>
+                  <p className="text-sm text-muted">Erstellen Sie Ihre erste Kampagne, um zu beginnen</p>
                 </div>
               ) : (
                 <div className="space-y-3">
@@ -173,18 +172,6 @@ export default async function AppPage() {
                   ))}
                 </div>
               )}
-            </div>
-          </div>
-
-          {/* Secondary Column */}
-          <div className="min-w-0">
-            <div className="bg-card border border-app rounded-2xl shadow-app overflow-hidden">
-              <div className="px-5 py-4 border-b border-app">
-                <h2 className="text-lg font-semibold text-[var(--text)]">Recent Activity</h2>
-              </div>
-              <div className="p-5">
-                <ActivityFeed limit={15} />
-              </div>
             </div>
           </div>
         </div>

@@ -18,7 +18,7 @@ export function getResendClient() {
 }
 
 export function getEmailFrom(): string {
-  return process.env.EMAIL_FROM || "Kasper Leads <noreply@example.com>";
+  return process.env.EMAIL_FROM || "Kacper Leads <noreply@example.com>";
 }
 
 export function getAppBaseUrl(): string {

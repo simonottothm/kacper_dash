@@ -13,10 +13,10 @@ export default function LandingPage() {
                                 <Users className="w-6 h-6 text-white" />
                             </div>
                             <div>
-                                <span className="text-xl font-bold bg-gradient-to-r from-accent to-info bg-clip-text text-transparent">
+                                <span className="text-xl font-bold text-[#1a1d1f]">
                                     Lead Dashboard
                                 </span>
-                                <p className="text-xs text-muted hidden sm:block">Professionelles Lead-Management</p>
+                                <p className="text-xs text-[#6b7280] hidden sm:block">Professionelles Lead-Management</p>
                             </div>
                         </div>
                         <Link
@@ -43,21 +43,21 @@ export default function LandingPage() {
                     {/* Badge */}
                     <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-accent-light to-info-light border border-accent/20 rounded-full mb-8 shadow-app">
                         <Sparkles className="w-4 h-4 text-accent" />
-                        <span className="text-sm font-semibold bg-gradient-to-r from-accent to-info bg-clip-text text-transparent">
+                        <span className="text-sm font-semibold text-accent">
                             Modernes Lead-Management System
                         </span>
                     </div>
 
                     {/* Main heading */}
-                    <h1 className="text-5xl sm:text-7xl lg:text-8xl font-bold text-[var(--text)] mb-8 leading-[1.1]">
+                    <h1 className="text-5xl sm:text-7xl lg:text-8xl font-bold text-[#1a1d1f] mb-8 leading-[1.1]">
                         Verwalten Sie Ihre Leads
-                        <span className="block bg-gradient-to-r from-accent via-info to-accent bg-clip-text text-transparent mt-3 bg-[length:200%_auto] animate-gradient">
+                        <span className="block text-accent mt-3">
                             einfach und effizient
                         </span>
                     </h1>
 
                     {/* Subheading */}
-                    <p className="text-xl sm:text-2xl text-secondary mb-12 max-w-3xl mx-auto leading-relaxed font-medium">
+                    <p className="text-xl sm:text-2xl text-[#6b7280] mb-12 max-w-3xl mx-auto leading-relaxed font-medium">
                         Behalten Sie den Überblick über alle Ihre Kontakte, verfolgen Sie den Fortschritt
                         und arbeiten Sie nahtlos mit Ihrem Team zusammen.
                     </p>
@@ -73,7 +73,7 @@ export default function LandingPage() {
                         </Link>
                         <a
                             href="#features"
-                            className="px-8 py-4 bg-white border-2 border-app text-[var(--text)] rounded-xl hover:border-accent/40 hover:shadow-app-md transition-all font-semibold w-full sm:w-auto text-center"
+                            className="px-8 py-4 bg-white border-2 border-[#e1e4e8] text-[#1a1d1f] rounded-xl hover:border-accent/40 hover:shadow-app-md transition-all font-semibold w-full sm:w-auto text-center"
                         >
                             Mehr erfahren
                         </a>
@@ -82,22 +82,22 @@ export default function LandingPage() {
                     {/* Stats */}
                     <div className="grid grid-cols-3 gap-8 max-w-2xl mx-auto">
                         <div className="text-center">
-                            <div className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-accent to-info bg-clip-text text-transparent mb-1">
+                            <div className="text-3xl sm:text-4xl font-bold text-accent mb-1">
                                 247+
                             </div>
-                            <div className="text-sm text-muted font-medium">Aktive Leads</div>
+                            <div className="text-sm text-[#6b7280] font-medium">Aktive Leads</div>
                         </div>
                         <div className="text-center">
-                            <div className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-accent to-info bg-clip-text text-transparent mb-1">
+                            <div className="text-3xl sm:text-4xl font-bold text-accent mb-1">
                                 12+
                             </div>
-                            <div className="text-sm text-muted font-medium">Kampagnen</div>
+                            <div className="text-sm text-[#6b7280] font-medium">Kampagnen</div>
                         </div>
                         <div className="text-center">
-                            <div className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-accent to-info bg-clip-text text-transparent mb-1">
+                            <div className="text-3xl sm:text-4xl font-bold text-accent mb-1">
                                 99%
                             </div>
-                            <div className="text-sm text-muted font-medium">Zufriedenheit</div>
+                            <div className="text-sm text-[#6b7280] font-medium">Zufriedenheit</div>
                         </div>
                     </div>
                 </div>
@@ -200,10 +200,10 @@ export default function LandingPage() {
                         <Sparkles className="w-4 h-4 text-accent" />
                         <span className="text-sm font-semibold text-accent">Funktionen</span>
                     </div>
-                    <h2 className="text-4xl sm:text-5xl font-bold text-[var(--text)] mb-6">
+                    <h2 className="text-4xl sm:text-5xl font-bold text-[#1a1d1f] mb-6">
                         Alles, was Sie brauchen
                     </h2>
-                    <p className="text-xl text-secondary max-w-3xl mx-auto leading-relaxed">
+                    <p className="text-xl text-[#6b7280] max-w-3xl mx-auto leading-relaxed">
                         Unser Dashboard bietet Ihnen alle Werkzeuge für erfolgreiches Lead-Management
                     </p>
                 </div>
@@ -255,8 +255,8 @@ export default function LandingPage() {
                             <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${feature.gradient} bg-opacity-10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-app`}>
                                 <feature.icon className="w-8 h-8 text-accent" />
                             </div>
-                            <h3 className="text-xl font-bold text-[var(--text)] mb-3">{feature.title}</h3>
-                            <p className="text-secondary leading-relaxed">{feature.description}</p>
+                            <h3 className="text-xl font-bold text-[#1a1d1f] mb-3">{feature.title}</h3>
+                            <p className="text-[#6b7280] leading-relaxed">{feature.description}</p>
                         </div>
                     ))}
                 </div>
@@ -264,7 +264,9 @@ export default function LandingPage() {
 
             {/* CTA Section */}
             <section className="max-w-7xl mx-auto px-6 sm:px-8 py-24">
-                <div className="relative bg-gradient-to-r from-accent via-info to-accent rounded-3xl p-12 sm:p-20 text-center shadow-2xl overflow-hidden">
+                <div className="relative rounded-3xl p-12 sm:p-20 text-center shadow-2xl overflow-hidden" style={{
+                    background: 'linear-gradient(to right, #4f46e5, #3b82f6, #4f46e5)'
+                }}>
                     {/* Animated background pattern */}
                     <div className="absolute inset-0 opacity-10">
                         <div className="absolute inset-0" style={{
@@ -281,7 +283,7 @@ export default function LandingPage() {
                         <h2 className="text-4xl sm:text-6xl font-bold text-white mb-6">
                             Bereit anzufangen?
                         </h2>
-                        <p className="text-xl sm:text-2xl text-blue-100 mb-12 max-w-3xl mx-auto leading-relaxed">
+                        <p className="text-xl sm:text-2xl text-white/90 mb-12 max-w-3xl mx-auto leading-relaxed">
                             Melden Sie sich an und beginnen Sie noch heute mit der Verwaltung Ihrer Leads
                         </p>
                         <Link
@@ -304,13 +306,13 @@ export default function LandingPage() {
                                 <Users className="w-5 h-5 text-white" />
                             </div>
                             <div>
-                                <span className="font-bold bg-gradient-to-r from-accent to-info bg-clip-text text-transparent">
+                                <span className="font-bold text-[#1a1d1f]">
                                     Lead Dashboard
                                 </span>
-                                <p className="text-xs text-muted">Professionelles Lead-Management</p>
+                                <p className="text-xs text-[#6b7280]">Professionelles Lead-Management</p>
                             </div>
                         </div>
-                        <div className="text-sm text-muted">
+                        <div className="text-sm text-[#6b7280]">
                             © 2026 Lead Dashboard. Alle Rechte vorbehalten.
                         </div>
                     </div>

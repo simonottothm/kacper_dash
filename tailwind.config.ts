@@ -12,6 +12,30 @@ const config: Config = {
         sans: ['var(--font-inter)', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
       },
       colors: {
+        // Brand colors
+        accent: {
+          DEFAULT: '#4f46e5',
+          hover: '#4338ca',
+          light: '#eef2ff',
+        },
+        info: {
+          DEFAULT: '#3b82f6',
+          light: '#dbeafe',
+        },
+        // Status colors
+        success: {
+          DEFAULT: '#10b981',
+          light: '#d1fae5',
+        },
+        warning: {
+          DEFAULT: '#f59e0b',
+          light: '#fef3c7',
+        },
+        error: {
+          DEFAULT: '#ef4444',
+          light: '#fee2e2',
+        },
+        // Neutral colors
         zinc: {
           50: '#fafafa',
           100: '#f4f4f5',
@@ -25,6 +49,13 @@ const config: Config = {
           900: '#18181b',
           950: '#09090b',
         },
+        // Semantic colors
+        border: {
+          DEFAULT: '#e1e4e8',
+          light: '#f0f2f5',
+        },
+        app: '#e1e4e8',
+        secondary: '#6b7280',
       },
       borderRadius: {
         '2xl': '1rem',

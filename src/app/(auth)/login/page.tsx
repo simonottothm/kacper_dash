@@ -26,10 +26,10 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
             <div className="w-10 h-10 rounded-xl bg-accent flex items-center justify-center">
               <span className="text-white font-bold text-lg">K</span>
             </div>
-            <span className="font-semibold text-2xl text-[var(--text)]">Kasper</span>
+            <span className="font-semibold text-2xl text-[var(--text)]">Kacper</span>
           </div>
           <h2 className="text-2xl font-semibold text-[var(--text)]">
-            Sign in to your account
+            Bei Ihrem Konto anmelden
           </h2>
         </div>
         <div className="bg-card border border-app rounded-2xl shadow-app-md p-8">

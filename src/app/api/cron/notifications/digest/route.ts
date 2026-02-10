@@ -39,7 +39,7 @@ export async function POST(request: Request) {
     const url = new URL(request.url);
     const modeFromQuery = url.searchParams.get("mode");
     let body: { mode?: string } = {};
-    
+
     if (!modeFromQuery) {
       try {
         body = await request.json();
@@ -49,7 +49,7 @@ export async function POST(request: Request) {
     } else {
       body = { mode: modeFromQuery };
     }
-    
+
     const validated = postSchema.parse(body);
 
     const serviceClient = getServiceClient();
@@ -211,7 +211,7 @@ export async function POST(request: Request) {
           await resend.emails.send({
             from: emailFrom,
             to: user.email,
-            subject: `Kasper Leads Digest - ${tenant.name}`,
+            subject: `Kacper Leads Digest - ${tenant.name}`,
             html: renderDigestEmail(digestData),
           });
 

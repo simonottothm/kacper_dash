@@ -4,7 +4,7 @@ import { getActiveTenantId } from "@/lib/tenant/activeTenant";
 import { getMemberships } from "@/lib/data/tenants";
 import { listAdminTenants } from "@/lib/data/adminTenants";
 import { TopbarProvider } from "@/components/layout/TopbarProvider";
-import TenantList from "@/components/admin/TenantList";
+import AdminTabs from "@/components/admin/AdminTabs";
 
 export default async function AdminPage() {
   const user = await getCurrentUser();
@@ -30,7 +30,7 @@ export default async function AdminPage() {
         <div className="px-6 sm:px-8 py-6 w-full">
           <div className="bg-card border border-app rounded-2xl shadow-app p-12 text-center">
             <p className="text-muted">
-              You are not an admin of any tenants. Please contact support.
+              Sie sind kein Administrator eines Mandanten. Bitte kontaktieren Sie den Support.
             </p>
           </div>
         </div>
@@ -47,7 +47,7 @@ export default async function AdminPage() {
       }}
     >
       <div className="px-6 sm:px-8 py-6 w-full">
-        <TenantList tenants={tenants} />
+        <AdminTabs tenants={tenants} userId={user.id} />
       </div>
     </TopbarProvider>
   );

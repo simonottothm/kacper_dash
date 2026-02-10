@@ -65,7 +65,7 @@ export function renderDigestEmail(data: DigestData): string {
 </head>
 <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
   <div style="background-color: #4f46e5; color: white; padding: 20px; border-radius: 8px 8px 0 0;">
-    <h1 style="margin: 0; font-size: 24px;">Kasper Leads Digest</h1>
+    <h1 style="margin: 0; font-size: 24px;">Kacper Leads Digest</h1>
     <p style="margin: 8px 0 0 0; opacity: 0.9;">${data.tenantName}</p>
   </div>
 

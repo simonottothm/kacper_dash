@@ -31,9 +31,8 @@ export default function Sidebar({
 }: SidebarProps) {
   return (
     <div
-      className={`fixed lg:sticky lg:top-0 left-0 top-0 h-screen w-[280px] shrink-0 bg-card border-r border-app flex flex-col z-50 transform transition-transform duration-300 ease-in-out lg:translate-x-0 ${
-        isOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
-      }`}
+      className={`fixed lg:sticky lg:top-0 left-0 top-0 h-screen w-[280px] shrink-0 bg-card border-r border-app flex flex-col z-50 transform transition-transform duration-300 ease-in-out lg:translate-x-0 ${isOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
+        }`}
     >
       {/* Logo with Close Button (Mobile) */}
       <div className="px-6 py-5 border-b border-app flex items-center justify-between shrink-0">
@@ -41,7 +40,7 @@ export default function Sidebar({
           <div className="w-10 h-10 rounded-xl bg-accent-gradient flex items-center justify-center shadow-app-md">
             <span className="text-white font-bold text-base">K</span>
           </div>
-          <span className="font-bold text-xl text-[var(--text)]">Kasper</span>
+          <span className="font-bold text-xl text-[var(--text)]">Kacper</span>
         </Link>
         <button
           onClick={onClose}
@@ -60,9 +59,14 @@ export default function Sidebar({
           </SidebarItem>
 
           {isAdmin && (
-            <SidebarItem href="/admin" icon={<ShieldCheckIcon className="w-5 h-5" />} onClick={onClose}>
-              Admin
-            </SidebarItem>
+            <>
+              <SidebarItem href="/admin" icon={<ShieldCheckIcon className="w-5 h-5" />} onClick={onClose}>
+                Admin
+              </SidebarItem>
+              <SidebarItem href="/admin/leads" icon={<HomeIcon className="w-5 h-5" />} onClick={onClose}>
+                Eigene Leads
+              </SidebarItem>
+            </>
           )}
         </nav>
 
