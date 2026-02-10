@@ -71,7 +71,7 @@ export async function listUsersForDigest(
   frequency: "daily" | "weekly",
   serviceClient: ReturnType<typeof import("@/lib/supabase/service").getServiceClient>
 ): Promise<Array<{ user_id: string; email: string }>> {
-  const { data: prefs, error: prefsError } = await serviceClient
+  const { data: prefs, error: prefsError } = await (serviceClient as any)
     .from("notification_prefs")
     .select("user_id")
     .eq("tenant_id", tenantId)
@@ -86,7 +86,7 @@ export async function listUsersForDigest(
     return [];
   }
 
-  const userIds = prefs.map((p) => p.user_id);
+  const userIds = (prefs as any[]).map((p) => p.user_id);
 
   const { data: users, error: usersError } = await serviceClient.auth.admin.listUsers();
 
