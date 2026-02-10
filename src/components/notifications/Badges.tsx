@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useRouter } from "next/navigation";
 
 interface BadgesProps {
@@ -12,13 +12,7 @@ export default function Badges({ tenantId }: BadgesProps) {
   const [badges, setBadges] = useState({ overdueFollowups: 0, newUpdates: 0 });
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    loadBadges();
-    const interval = setInterval(loadBadges, 30000);
-    return () => clearInterval(interval);
-  }, [tenantId]);
-
-  const loadBadges = async () => {
+  const loadBadges = useCallback(async () => {
     try {
       const response = await fetch(`/api/notifications/badges?tenantId=${tenantId}`);
       const data = await response.json();
@@ -31,7 +25,13 @@ export default function Badges({ tenantId }: BadgesProps) {
     } finally {
       setLoading(false);
     }
-  };
+  }, [tenantId]);
+
+  useEffect(() => {
+    loadBadges();
+    const interval = setInterval(loadBadges, 30000);
+    return () => clearInterval(interval);
+  }, [tenantId, loadBadges]);
 
   const total = badges.overdueFollowups + badges.newUpdates;
 

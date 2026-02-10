@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import CampaignManager from "./CampaignManager";
 import StatusManager from "./StatusManager";
 import TemplateManager from "./TemplateManager";
@@ -50,13 +50,7 @@ export default function TenantTabs({
     { id: "importLogs", label: "Import Logs" },
   ];
 
-  useEffect(() => {
-    if (activeTab === "importLogs" && selectedCampaignId) {
-      loadImportJobs();
-    }
-  }, [activeTab, selectedCampaignId]);
-
-  const loadImportJobs = async () => {
+  const loadImportJobs = useCallback(async () => {
     if (!selectedCampaignId) return;
 
     setLoadingJobs(true);
@@ -73,7 +67,13 @@ export default function TenantTabs({
     } finally {
       setLoadingJobs(false);
     }
-  };
+  }, [tenantId, selectedCampaignId]);
+
+  useEffect(() => {
+    if (activeTab === "importLogs" && selectedCampaignId) {
+      loadImportJobs();
+    }
+  }, [activeTab, selectedCampaignId, loadImportJobs]);
 
   return (
     <div>
@@ -83,11 +83,10 @@ export default function TenantTabs({
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`py-4 px-1 border-b-2 font-medium text-sm ${
-                activeTab === tab.id
-                  ? "border-accent text-accent"
-                  : "border-transparent text-muted hover:text-[var(--text)] hover:border-app"
-              }`}
+              className={`py-4 px-1 border-b-2 font-medium text-sm ${activeTab === tab.id
+                ? "border-accent text-accent"
+                : "border-transparent text-muted hover:text-[var(--text)] hover:border-app"
+                }`}
             >
               {tab.label}
             </button>

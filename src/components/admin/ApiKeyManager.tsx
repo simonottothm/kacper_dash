@@ -115,7 +115,7 @@ export default function ApiKeyManager({ tenantId, keys: initialKeys }: ApiKeyMan
             onClick={() => setNewKey(null)}
             className="text-sm text-yellow-700 hover:text-yellow-800"
           >
-            I've saved the key
+            I&apos;ve saved the key
           </button>
         </div>
       )}
@@ -169,11 +169,10 @@ export default function ApiKeyManager({ tenantId, keys: initialKeys }: ApiKeyMan
               </div>
               <button
                 onClick={() => handleToggleActive(key.id, key.is_active)}
-                className={`px-3 py-1 text-sm border rounded-xl ${
-                  key.is_active
+                className={`px-3 py-1 text-sm border rounded-xl ${key.is_active
                     ? "border-red-300 text-red-600 hover:bg-red-50"
                     : "border-green-300 text-green-600 hover:bg-green-50"
-                }`}
+                  }`}
               >
                 {key.is_active ? "Deactivate" : "Activate"}
               </button>

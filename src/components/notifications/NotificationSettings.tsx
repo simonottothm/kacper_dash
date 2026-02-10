@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import type { NotificationPreferences } from "@/lib/data/notifications";
 
@@ -15,11 +15,7 @@ export default function NotificationSettings({ tenantId }: NotificationSettingsP
   const [error, setError] = useState<string | null>(null);
   const [prefs, setPrefs] = useState<NotificationPreferences | null>(null);
 
-  useEffect(() => {
-    loadPreferences();
-  }, [tenantId]);
-
-  const loadPreferences = async () => {
+  const loadPreferences = useCallback(async () => {
     setLoading(true);
     setError(null);
 
@@ -37,7 +33,11 @@ export default function NotificationSettings({ tenantId }: NotificationSettingsP
     } finally {
       setLoading(false);
     }
-  };
+  }, [tenantId]);
+
+  useEffect(() => {
+    loadPreferences();
+  }, [tenantId, loadPreferences]);
 
   const handleSave = async () => {
     if (!prefs) return;

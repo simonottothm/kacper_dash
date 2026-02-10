@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import type { Lead } from "@/lib/data/leads";
 import type { LeadUpdate } from "@/lib/data/leadUpdates";
@@ -33,23 +33,7 @@ export default function LeadModal({
   const [savingFollowup, setSavingFollowup] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    if (lead) {
-      setStatusId(lead.status_id || "");
-      setFollowUpAt(
-        lead.next_follow_up_at
-          ? new Date(lead.next_follow_up_at).toISOString().slice(0, 16)
-          : ""
-      );
-      setUpdates([]);
-      setError(null);
-      if (isOpen) {
-        loadUpdates();
-      }
-    }
-  }, [lead, isOpen]);
-
-  const loadUpdates = async () => {
+  const loadUpdates = useCallback(async () => {
     if (!lead) return;
 
     setLoadingUpdates(true);
@@ -67,7 +51,23 @@ export default function LeadModal({
     } finally {
       setLoadingUpdates(false);
     }
-  };
+  }, [lead]);
+
+  useEffect(() => {
+    if (lead) {
+      setStatusId(lead.status_id || "");
+      setFollowUpAt(
+        lead.next_follow_up_at
+          ? new Date(lead.next_follow_up_at).toISOString().slice(0, 16)
+          : ""
+      );
+      setUpdates([]);
+      setError(null);
+      if (isOpen) {
+        loadUpdates();
+      }
+    }
+  }, [lead, isOpen, loadUpdates]);
 
   const handleStatusChange = async (newStatusId: string) => {
     if (!lead || savingStatus) return;
