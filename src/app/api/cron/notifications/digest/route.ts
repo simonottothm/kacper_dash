@@ -56,9 +56,11 @@ export async function POST(request: Request) {
     const resend = getResendClient();
     const emailFrom = getEmailFrom();
 
-    const { data: tenants } = await serviceClient
+    const { data: tenantsData } = await serviceClient
       .from("tenants")
       .select("id, name");
+
+    const tenants = (tenantsData || []) as any[];
 
     if (!tenants || tenants.length === 0) {
       return NextResponse.json({
@@ -95,26 +97,28 @@ export async function POST(request: Request) {
           continue;
         }
 
-        const { data: campaigns } = await serviceClient
+        const { data: campaignsData } = await serviceClient
           .from("campaigns")
           .select("id")
           .eq("tenant_id", tenant.id)
           .eq("is_archived", false);
 
-        const campaignIds = (campaigns || []).map((c) => c.id);
+        const campaigns = (campaignsData || []) as any[];
+        const campaignIds = campaigns.map((c) => c.id);
 
         if (campaignIds.length === 0) {
           skipped++;
           continue;
         }
 
-        const { data: leads } = await serviceClient
+        const { data: leadsDataRaw } = await serviceClient
           .from("leads")
           .select("id")
           .in("campaign_id", campaignIds)
           .eq("is_archived", false);
 
-        const leadIds = (leads || []).map((l) => l.id);
+        const leads = (leadsDataRaw || []) as any[];
+        const leadIds = leads.map((l) => l.id);
 
         if (leadIds.length === 0) {
           skipped++;
@@ -126,7 +130,7 @@ export async function POST(request: Request) {
           ? lastSeenAt
           : lastDigestSent?.toISOString() || new Date(0).toISOString();
 
-        const { data: updates } = await serviceClient
+        const { data: updatesData } = await serviceClient
           .from("lead_updates")
           .select("id, created_at, update_type, call_outcome, comment, lead_id")
           .in("lead_id", leadIds)
@@ -134,21 +138,27 @@ export async function POST(request: Request) {
           .order("created_at", { ascending: false })
           .limit(10);
 
-        const updateLeadIds = (updates || []).map((u) => u.lead_id);
-        const { data: leadsData } = await serviceClient
+        const updates = (updatesData || []) as any[];
+
+        const updateLeadIds = updates.map((u) => u.lead_id);
+        const { data: leadsInfoData } = await serviceClient
           .from("leads")
           .select("id, full_name, company, campaign_id")
           .in("id", updateLeadIds);
 
-        const { data: campaignsData } = await serviceClient
+        const leadsData = (leadsInfoData || []) as any[];
+
+        const { data: campaignsInfoData } = await serviceClient
           .from("campaigns")
           .select("id, name")
-          .in("id", Array.from(new Set((leadsData || []).map((l) => l.campaign_id))));
+          .in("id", Array.from(new Set(leadsData.map((l) => l.campaign_id))));
 
-        const leadsMap = new Map((leadsData || []).map((l) => [l.id, l]));
-        const campaignsMap = new Map((campaignsData || []).map((c) => [c.id, c]));
+        const campaignsDataItems = (campaignsInfoData || []) as any[];
 
-        const digestUpdates = (updates || []).map((update) => {
+        const leadsMap = new Map(leadsData.map((l) => [l.id, l]));
+        const campaignsMap = new Map(campaignsDataItems.map((c) => [c.id, c]));
+
+        const digestUpdates = updates.map((update) => {
           const lead = leadsMap.get(update.lead_id);
           const campaign = lead ? campaignsMap.get(lead.campaign_id) : null;
 
@@ -165,7 +175,7 @@ export async function POST(request: Request) {
         });
 
         const nowISO = new Date().toISOString();
-        const { data: overdueLeads } = await serviceClient
+        const { data: overdueLeadsData } = await serviceClient
           .from("leads")
           .select("id, full_name, company, campaign_id, next_follow_up_at")
           .in("id", leadIds)
@@ -173,13 +183,17 @@ export async function POST(request: Request) {
           .lt("next_follow_up_at", nowISO)
           .limit(10);
 
+        const overdueLeads = (overdueLeadsData || []) as any[];
+
         const overdueCampaignIds = Array.from(
-          new Set((overdueLeads || []).map((l) => l.campaign_id))
+          new Set(overdueLeads.map((l) => l.campaign_id))
         );
-        const { data: overdueCampaignsData } = await serviceClient
+        const { data: overdueCampaignsInfoData } = await serviceClient
           .from("campaigns")
           .select("id, name")
           .in("id", overdueCampaignIds);
+
+        const overdueCampaignsData = (overdueCampaignsInfoData || []) as any[];
 
         const overdueCampaignsMap = new Map(
           (overdueCampaignsData || []).map((c) => [c.id, c])
