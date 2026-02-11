@@ -11,7 +11,7 @@ export async function checkIdempotency(
 ): Promise<{ exists: boolean; response?: unknown }> {
   const serviceClient = getServiceClient();
 
-  const { data, error } = await serviceClient
+  const { data, error } = await (serviceClient as any)
     .from("ingestion_requests")
     .select("response_json")
     .eq("tenant_id", tenantId)
@@ -35,7 +35,7 @@ export async function storeIdempotencyResponse(
 ): Promise<void> {
   const serviceClient = getServiceClient();
 
-  await serviceClient.from("ingestion_requests").upsert(
+  await (serviceClient as any).from("ingestion_requests").upsert(
     {
       tenant_id: tenantId,
       key_hash: keyHash,
@@ -53,7 +53,7 @@ export async function cleanupOldIdempotencyKeys(): Promise<void> {
   const oneHourAgo = new Date();
   oneHourAgo.setHours(oneHourAgo.getHours() - 1);
 
-  await serviceClient
+  await (serviceClient as any)
     .from("ingestion_requests")
     .delete()
     .lt("created_at", oneHourAgo.toISOString());

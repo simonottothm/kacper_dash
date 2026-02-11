@@ -18,7 +18,7 @@ export function ok<T>(data: T, requestId?: string): NextResponse<ApiResponse<T>>
     {
       ok: true,
       data,
-      ...(requestId && { requestId }),
+      ...(requestId ? { requestId } : {}),
     },
     {
       headers: requestId ? { "x-request-id": requestId } : undefined,
@@ -38,9 +38,9 @@ export function badRequest(
       error: {
         code,
         message,
-        ...(details && { details }),
+        ...(details ? { details } : {}),
       },
-      ...(requestId && { requestId }),
+      ...(requestId ? { requestId } : {}),
     },
     {
       status: 400,
@@ -60,7 +60,7 @@ export function unauthorized(
         code: "UNAUTHORIZED",
         message,
       },
-      ...(requestId && { requestId }),
+      ...(requestId ? { requestId } : {}),
     },
     {
       status: 401,
@@ -80,7 +80,7 @@ export function forbidden(
         code: "FORBIDDEN",
         message,
       },
-      ...(requestId && { requestId }),
+      ...(requestId ? { requestId } : {}),
     },
     {
       status: 403,
@@ -100,7 +100,7 @@ export function notFound(
         code: "NOT_FOUND",
         message,
       },
-      ...(requestId && { requestId }),
+      ...(requestId ? { requestId } : {}),
     },
     {
       status: 404,
@@ -120,9 +120,9 @@ export function serverError(
       error: {
         code: "INTERNAL_ERROR",
         message,
-        ...(details && { details }),
+        ...(details ? { details } : {}),
       },
-      ...(requestId && { requestId }),
+      ...(requestId ? { requestId } : {}),
     },
     {
       status: 500,
@@ -142,7 +142,7 @@ export function tooManyRequests(
         code: "RATE_LIMIT_EXCEEDED",
         message,
       },
-      ...(requestId && { requestId }),
+      ...(requestId ? { requestId } : {}),
     },
     {
       status: 429,

@@ -86,14 +86,14 @@ export async function upsertUserTenantStateWithService(
     last_digest_sent_at?: string | null;
   }
 ): Promise<void> {
-  const { data: existing } = await serviceClient
+  const { data: existing } = await (serviceClient as any)
     .from("user_tenant_state")
     .select("*")
     .eq("tenant_id", tenantId)
     .eq("user_id", userId)
     .single();
 
-  await serviceClient
+  await (serviceClient as any)
     .from("user_tenant_state")
     .upsert(
       {
@@ -119,7 +119,7 @@ export async function getUserTenantStateWithService(
   tenantId: string,
   userId: string
 ): Promise<UserTenantState | null> {
-  const { data, error } = await serviceClient
+  const { data, error } = await (serviceClient as any)
     .from("user_tenant_state")
     .select("*")
     .eq("tenant_id", tenantId)
